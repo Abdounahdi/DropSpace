@@ -1,4 +1,9 @@
-import { HiOutlineArchiveBox, HiOutlineStar } from "react-icons/hi2";
+import {
+  HiOutlineArchiveBox,
+  HiOutlineStar,
+  HiOutlineTrash,
+  HiTrash,
+} from "react-icons/hi2";
 import styled, { css } from "styled-components";
 
 const ButtonBox = styled.div`
@@ -10,6 +15,13 @@ const ButtonBox = styled.div`
 
 const variations = {
   delete: css`
+    background-color: var(--color-red-700);
+
+    &:hover {
+      background-color: var();
+    }
+  `,
+  archive: css`
     background-color: var(--color-red-700);
 
     &:hover {
@@ -70,15 +82,28 @@ const ActionButton = styled.button`
   }
 `;
 
-function ActionsBox() {
+function ActionsBox({
+  deleteAction = false,
+  starAction = false,
+  archiveAction = false,
+}) {
   return (
     <ButtonBox>
-      <ActionButton type="star">
-        <HiOutlineStar />
-      </ActionButton>
-      <ActionButton type="delete">
-        <HiOutlineArchiveBox />
-      </ActionButton>
+      {starAction && (
+        <ActionButton type="star">
+          <HiOutlineStar />
+        </ActionButton>
+      )}
+      {deleteAction && (
+        <ActionButton type="delete">
+          <HiOutlineTrash />
+        </ActionButton>
+      )}
+      {archiveAction && (
+        <ActionButton type="archive">
+          <HiOutlineArchiveBox />
+        </ActionButton>
+      )}
     </ButtonBox>
   );
 }

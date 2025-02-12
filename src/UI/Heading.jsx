@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
-import Sort from "./Sort";
+import Sort from "./SortBy";
+import SortBy from "./SortBy";
+import Icon from "./Icon";
 
 const Container = styled.div`
   display: flex;
@@ -13,44 +15,23 @@ const TitleContainer = styled.div`
   gap: 1.6rem;
 `;
 
-const Icon = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  border-radius: var(--border-radius-lg);
-
-  & svg {
-    height: 5rem;
-    width: 5rem;
-    color: var(--color-grey-0);
-    stroke-width: 2;
-  }
-
-  ${(props) => variations[props.color]}
-`;
-
-const variations = {
-  blue: css`
-    background-color: var(--color-brand-600);
-  `,
-  yellow: css`
-    background-color: var(--color-yellow-500);
-  `,
-  pink: css`
-    background-color: var(--color-pink-500);
-  `,
-};
-
 const H1 = styled.h1``;
 
 function Heading({ icon, heading, color }) {
   return (
     <Container>
       <TitleContainer>
-        <Icon color={color}>{icon}</Icon>
+        <Icon color={color} icon={icon}/>
         <H1>{heading}</H1>
       </TitleContainer>
-      <Sort/>
+      <SortBy
+        options={[
+          { value: "date-asc", label: "Sort by date (Earlier first)" },
+          { value: "size-asc", label: "Sort by size (Low first)" },
+          { value: "date-desc", label: "Sort by date (Recent first)" },
+          { value: "size-desc", label: "Sort by date (Larger first)" },
+        ]}
+      />
     </Container>
   );
 }

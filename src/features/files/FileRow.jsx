@@ -3,7 +3,7 @@ import formatBytes from "../../helpers/bytesFormatter";
 import ActionsBox from "../ActionsBox";
 import FileName from "./FileName";
 
-function FileRow({ file }) {
+function FileRow({ file, children  }) {
   return (
     <Table.Row>
       <FileName name={file.name} type={file.type} />
@@ -15,7 +15,7 @@ function FileRow({ file }) {
         })}
       </div>
       <div>{formatBytes(file.size)}</div>
-      <ActionsBox />
+      {children}
     </Table.Row>
   );
 }
