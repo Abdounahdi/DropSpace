@@ -30,6 +30,7 @@ const GlobalStyles = createGlobalStyle`
 
 
   --color-purple-100 :rgb(224, 215, 255) ;
+  --color-purple-600 :#863FDD ; 
   --color-purple-700 :rgb(105, 28, 199) ; 
 
   --color-red-100: #fee2e2;
@@ -95,10 +96,10 @@ const GlobalStyles = createGlobalStyle`
   --color-brand-800: #3730a3;
   --color-brand-900: #312e81;
   
-  --border-radius-tiny: 3px;
-  --border-radius-sm: 5px;
-  --border-radius-md: 7px;
-  --border-radius-lg: 9px;
+  --border-radius-tiny: 4px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 9px;
+  --border-radius-lg: 12px;
 
 
 }
@@ -187,6 +188,10 @@ h6 {
 img {
   max-width: 100%;
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
+}
+
+.ant-upload{
+  width: 100%;
 }
 `;
 
