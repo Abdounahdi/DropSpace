@@ -1,8 +1,17 @@
 import { Upload, message } from "antd";
 import styled from "styled-components";
 import { HiMiniArrowUpOnSquareStack } from "react-icons/hi2";
+import { useEffect, useState } from "react";
 
-const Button = styled.button`
+const Label = styled.label`
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+
+  & input[type="file"] {
+    display: none;
+  }
+
   border: none;
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-sm);
@@ -70,12 +79,27 @@ const props = {
 };
 
 function UploadButton() {
+  const [file, setFile] = useState();
+
+  
+  useEffect(
+    function () {
+      console.log(file);
+    },
+    [file]
+  );
   return (
-    <Upload style={{ width: "100%" }} {...props}>
-      <Button>
-        <HiMiniArrowUpOnSquareStack /> <p>Upload </p>
-      </Button>
-    </Upload>
+    // <Upload style={{ width: "100%" }} {...props}>
+    <Label>
+      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+      <HiMiniArrowUpOnSquareStack /> <p>Upload </p>
+    </Label>
+    // </Upload>
+    // <Upload style={{ width: "100%" }} {...props}>
+    //   <Button onClick={handleUploadFile}>
+    //     <HiMiniArrowUpOnSquareStack /> <p>Upload </p>
+    //   </Button>
+    // </Upload>
   );
 }
 

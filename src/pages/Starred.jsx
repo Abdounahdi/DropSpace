@@ -1,5 +1,11 @@
+
 function Starred() {
-  return <div>Starred</div>;
+
+  return (
+    <>
+      <p>Starred</p>
+    </>
+  );
 }
 
 export default Starred;

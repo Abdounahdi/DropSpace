@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { HiArchiveBoxXMark } from "react-icons/hi2";
 
 const StyledTable = styled.div`
-  border: 1px solid var(--color-grey-200);
+  /* border: 1px solid var(--color-grey-200); */
 
   font-size: 1.4rem;
-  background-color: var(--color-grey-0);
+  /* background-color: var(--color-grey-0); */
   border-radius: 7px;
   overflow: hidden;
 `;
@@ -21,13 +21,21 @@ const CommonRow = styled.div`
 
 const StyledHeader = styled(CommonRow)`
   padding: 1.6rem 2.4rem;
-
-  background-color: var(--color-grey-50);
+  font-size: 1.3rem;
+  /* background-color: var(--color-grey-50); */
   border-bottom: 1px solid var(--color-grey-100);
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 0.4px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--color-grey-600);
+
+  /* & div{
+    text-align: center;
+
+  } */
+  & :last-child {
+    text-align: end;
+  }
 `;
 
 const StyledRow = styled(CommonRow)`
@@ -35,6 +43,9 @@ const StyledRow = styled(CommonRow)`
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);
+  }
+  & :last-child {
+    text-align: end;
   }
 `;
 
