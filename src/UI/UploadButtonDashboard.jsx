@@ -6,7 +6,10 @@ import toast from "react-hot-toast";
 import Media from "../Style/Media";
 
 const Label = styled.label`
-  display: inline-block;
+  display: none !important;
+  ${Media.phone`
+    display:flex !important ; 
+  `}
   padding: 6px 12px;
   cursor: pointer;
 
@@ -65,7 +68,7 @@ const Label = styled.label`
   }
 `;
 
-function UploadButton({ style }) {
+function UploadButtonDashboard({ style }) {
   const dispatch = useDispatch();
   const limits = useSelector((store) => store.limits);
 
@@ -107,4 +110,4 @@ function UploadButton({ style }) {
   );
 }
 
-export default UploadButton;
+export default UploadButtonDashboard;

@@ -5,6 +5,11 @@ import { HiOutlinePhoto } from "react-icons/hi2";
 import FilesTable from "../features/files/FilesTable";
 import CardLinks from "../features/Dashboard/CardLinks";
 import { useSelector } from "react-redux";
+import Media from "../Style/Media";
+import { Table } from "antd";
+import UploadButton from "../UI/UploadButton";
+import UploadButtonDashboard from "../UI/UploadButtonDashboard";
+import DashboardTable from "../features/Dashboard/DashboardTable";
 
 const StyledDashboardLayout = styled.div`
   display: grid;
@@ -12,25 +17,47 @@ const StyledDashboardLayout = styled.div`
   grid-template-rows: auto 34rem 24rem;
   gap: 2.4rem;
   row-gap: 4.4rem;
+  ${Media.laptop`
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto ;
+  `}
+  ${Media.tablet`
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+    /* grid-template-rows: 1fr 1fr auto ; */
+  `}
+  ${Media.phone`
+    grid-template-rows: auto ;
+  `}
 `;
 
-const DashboardTable = styled.div`
-  grid-column: 1 / span 2;
-  grid-row: 2 / span 2;
-  overflow-y: scroll;
+// const DashboardTable = styled.div`
+//   grid-column: 1 / span 2;
+//   grid-row: 2 / span 2;
+//   overflow-y: scroll;
 
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+//   ${Media.laptop`
+//     grid-row: 3 / span 2;
+//   `}
+//   ${Media.tablet`
+//     grid-column: 1 / 1;
+//     grid-row: 4/ span 2;
+//     /* grid-template-rows: 1fr 1fr auto ; */
+//   `}
 
-  & ::-webkit-scrollbar {
-    display: none;
-  }
-`;
+//   -ms-overflow-style: none;
+//   scrollbar-width: none;
+
+//   & ::-webkit-scrollbar {
+//     display: none;
+//   }
+// `;
 
 function Dashboard() {
   const files = useSelector((store) => store.files);
   return (
     <StyledDashboardLayout>
+      <UploadButtonDashboard />
       <Usage
         color="purple"
         field="Documents"
@@ -49,10 +76,7 @@ function Dashboard() {
         icon={<HiOutlineVideoCamera />}
         value="video"
       />
-      <DashboardTable>
-        <h1>Recent Files</h1>
-        <FilesTable data={files} inDashboard={true} />
-      </DashboardTable>
+      <DashboardTable files={files} />
       <CardLinks
         starred={files.filter((file) => file.isStarred).length}
         archived={files.filter((file) => file.isArchived).length}

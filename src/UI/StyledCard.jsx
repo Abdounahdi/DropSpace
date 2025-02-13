@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import Media from "../Style/Media";
 
 const variations = {
   vertical: css`
@@ -6,6 +7,9 @@ const variations = {
     flex-direction: column;
     align-items: start;
     gap: 2rem;
+    ${Media.tablet`
+      flex-direction:row;
+    `}
   `,
   horizontal: css`
     display: flex;

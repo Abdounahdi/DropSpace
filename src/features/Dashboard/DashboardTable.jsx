@@ -1,7 +1,10 @@
-import { createContext, useContext } from "react";
 import styled from "styled-components";
+import Media from "../../Style/Media";
+
 import { HiArchiveBoxXMark } from "react-icons/hi2";
-import Media from "../Style/Media";
+import FileRow from "../files/FileRow";
+import FileName from "../files/FileName";
+import formatBytes from "../../helpers/bytesFormatter";
 
 const StyledTable = styled.div`
   /* border: 1px solid var(--color-grey-200); */
@@ -14,9 +17,9 @@ const StyledTable = styled.div`
 
 const CommonRow = styled.div`
   display: grid;
-  grid-template-columns: ${(props) => props.columns};
+  grid-template-columns: 2fr 1fr 1fr;
   ${Media.tabletMini`
-    grid-template-columns: 2fr 1fr 1fr ; 
+    grid-template-columns: 2fr 1fr ; 
   `}
   ${Media.phone`
     grid-template-columns: 2fr 1fr ; 
@@ -83,47 +86,80 @@ const Empty = styled.p`
   gap: 0.5rem;
 `;
 
-const TableContext = createContext();
-
-function Table({ children, columns }) {
-  return (
-    <TableContext.Provider value={{ columns }}>
-      <StyledTable role="table">{children}</StyledTable>
-    </TableContext.Provider>
-  );
-}
-
-function Header({ children }) {
-  const { columns } = useContext(TableContext);
-  return (
-    <StyledHeader role="row" columns={columns} as="header">
-      {children}
-    </StyledHeader>
-  );
-}
-
-function Row({ children }) {
-  const { columns } = useContext(TableContext);
-  return (
-    <StyledRow role="row" columns={columns}>
-      {children}
-    </StyledRow>
-  );
-}
-
-function Body({ data, render }) {
+function TableBody({ data, children }) {
   if (!data?.length)
     return (
       <Empty>
         <HiArchiveBoxXMark /> <span>No data to show at the moment !</span>
       </Empty>
     );
-  return <StyledBody>{data.map(render)}</StyledBody>;
+  return <StyledBody>{children}</StyledBody>;
 }
 
-Table.Header = Header;
-Table.Body = Body;
-Table.Row = Row;
-Table.Footer = Footer;
+const H = styled.h1`
+  font-size: 4.3rem;
+  color: var(--color-grey-800);
+`;
 
-export default Table;
+const DashboardTableStyle = styled.div`
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 2;
+  overflow-y: scroll;
+
+  ${Media.laptop`
+    grid-row: 3 / span 2;
+  `}
+
+  ${Media.tablet`
+    grid-column: 1 / 1;
+    grid-row: 4/ span 2;
+    /* grid-template-rows: 1fr 1fr auto ; */
+    `}
+    ${Media.phone`
+      grid-row: 5 / span 2;
+    `}
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  & ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const DivTablet = styled.div`
+  ${Media.tabletMini`
+    display:none;
+  `}
+`;
+const DivPhone = styled.div`
+  ${Media.phone`
+    display:none;
+  `}
+`;
+
+function DashboardTable({ files }) {
+  return (
+    <DashboardTableStyle>
+      <H>Recent Files</H>
+      <StyledTable>
+        <StyledHeader>
+          <div>Name</div>
+          <DivTablet>Date Created</DivTablet>
+          <div>Size</div>
+        </StyledHeader>
+        <TableBody data={files}>
+          {files.map((file) => (
+            <StyledRow key={file.id}>
+              <FileName file={file} showTags={false} />
+              <DivTablet>{file.dateCreated}</DivTablet>
+              <div>{formatBytes(file.size)}</div>
+            </StyledRow>
+          ))}
+        </TableBody>
+      </StyledTable>
+    </DashboardTableStyle>
+  );
+}
+
+export default DashboardTable;

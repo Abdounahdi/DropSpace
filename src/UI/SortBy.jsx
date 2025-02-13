@@ -9,6 +9,10 @@ const StyledSelect = styled.select`
   background-color: var(--color-grey-50);
   font-weight: 400;
   color: var(--color-grey-500);
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 function SortBy({ options }) {

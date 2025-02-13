@@ -1,6 +1,19 @@
+import styled from "styled-components";
 import Table from "../../UI/Table";
 import ActionsBox from "./ActionsBox";
 import FileRow from "./FileRow";
+import Media from "../../Style/Media";
+
+const DivTablet = styled.div`
+  ${Media.tabletMini`
+    display:none;
+  `}
+`;
+const DivPhone = styled.div`
+  ${Media.phone`
+    display:none;
+  `}
+`;
 
 function FilesTable({
   data,
@@ -9,14 +22,14 @@ function FilesTable({
   starAction,
   archiveAction,
   deleteAction,
-  showTags = false 
+  showTags = false,
 }) {
   return (
-    <Table columns={inDashboard ? "1fr 1fr 1fr" : "1fr 1fr 1fr 1fr"}>
+    <Table columns={inDashboard ? "2fr 1fr 1fr" : "2fr 1fr 1fr 1fr"}>
       <Table.Header>
         <div>Name</div>
-        <div>Date Created</div>
-        <div style={{ textAlign: "start" }}>Size</div>
+        <DivTablet>Date Created</DivTablet>
+        <DivPhone style={{ textAlign: "start" }}>Size</DivPhone>
         {inDashboard ? "" : <div>Actions</div>}
       </Table.Header>
       <Table.Body

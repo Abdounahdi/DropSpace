@@ -19,12 +19,13 @@ const Row = styled.div`
 
 const H = styled.h3`
   font-size: 2rem;
+  font-weight: 600;
 `;
 
 const P = styled.p`
   color: var(--color-grey-400);
   font-weight: 500;
-`
+`;
 
 function CardLinks({ starred, archived }) {
   return (

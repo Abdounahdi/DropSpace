@@ -5,6 +5,7 @@ import StyledCard from "./StyledCard";
 import { useDispatch, useSelector } from "react-redux";
 import formatBytes from "../helpers/bytesFormatter";
 import { limitReached } from "../redux/limitsSlice";
+import Media from "../Style/Media";
 
 const P = styled.p`
   color: var(--color-grey-500);
@@ -20,10 +21,14 @@ const TextContainer = styled.div`
 
 const B = styled.b`
   color: var(--color-grey-800);
+  ${Media.phone`
+    display:none;
+  `}
 `;
 
 const H = styled.h3`
   font-size: 2.1rem;
+  font-weight: 600;
 `;
 
 const RowText = styled.div`
@@ -34,12 +39,19 @@ const RowText = styled.div`
 
 const HUNDRED_GEGABYTE = 100000000000;
 
-function Usage({ color, field, icon, value }) {
+function Usage({ color, field, icon, value, style }) {
   const files = useSelector((store) => store.files);
   const sizeUsed = files
     .filter((file) => file.type === value)
     .reduce((acc, curr) => acc + curr.size, 0);
   const precentage = ((sizeUsed * 100) / HUNDRED_GEGABYTE).toFixed(0);
+  let progressLength;
+
+  // if (window.matchMedia("(max-width: 880px)").matches) {
+  //   progressLength = 500;
+  // } else {
+  //   progressLength = 300;
+  // }
 
   const dispatch = useDispatch();
 
@@ -57,21 +69,21 @@ function Usage({ color, field, icon, value }) {
   }
 
   return (
-    <StyledCard type="vertical">
+    <StyledCard type="vertical" style={style}>
       <Icon
         style={{ padding: "1.6rem", justifyContent: "center" }}
         color={color}
         icon={icon}
       />
-      <H>{field}</H>
       <TextContainer>
+        <H>{field}</H>
         <Progress
           percent={precentage}
           percentPosition={{
             align: "start",
             type: "inner",
           }}
-          size={[300, 12]}
+          size={[progressLength, 12]}
           strokeColor={strokeColorProgress}
         />
         <RowText>

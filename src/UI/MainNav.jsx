@@ -6,6 +6,7 @@ import {
 } from "react-icons/hi2";
 import { NavLink } from "react-router";
 import styled from "styled-components";
+import Media from "../Style/Media";
 
 const NavList = styled.ul`
   display: flex;
@@ -25,6 +26,9 @@ const StyledNavLink = styled(NavLink)`
     font-weight: 500;
     padding: 1.2rem 2.4rem;
     transition: all 0.3s;
+    ${Media.laptopMini`
+    padding: 1.2rem 1.4rem;
+  `}
   }
 
   /* This works because react-router places the active class on the active NavLink */
@@ -52,9 +56,9 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-function MainNav() {
+function MainNav({onClick}) {
   return (
-    <nav>
+    <nav onClick={onClick}>
       <NavList>
         <li>
           <StyledNavLink to="/">

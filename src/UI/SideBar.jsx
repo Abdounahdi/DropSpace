@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import UploadButton from "./UploadButton";
 import MainNav from "./MainNav";
+import Media from "../Style/Media";
 
 const StyledSideBar = styled.aside`
   background-color: var(--color-grey-0);
@@ -11,6 +12,16 @@ const StyledSideBar = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+
+  ${Media.laptopMini`
+    & h2 , span , p{
+      display:none;
+    }
+  `}
+
+  ${Media.phone`
+    display:none;
+  `}
 `;
 
 function SideBar() {
