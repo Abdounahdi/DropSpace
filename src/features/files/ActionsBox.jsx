@@ -2,9 +2,10 @@ import {
   HiOutlineArchiveBox,
   HiOutlineStar,
   HiOutlineTrash,
-  HiTrash,
 } from "react-icons/hi2";
 import styled, { css } from "styled-components";
+import { archiveFile, starFile } from "../../redux/filesSlice";
+import { useDispatch } from "react-redux";
 
 const ButtonBox = styled.div`
   display: flex;
@@ -83,24 +84,34 @@ const ActionButton = styled.button`
 `;
 
 function ActionsBox({
+  page,
   deleteAction = false,
   starAction = false,
   archiveAction = false,
+  id,
 }) {
+  const dispatch = useDispatch();
   return (
     <ButtonBox>
       {starAction && (
-        <ActionButton type="star">
+        <ActionButton type="star" onClick={() => dispatch(starFile(id))}>
           <HiOutlineStar />
         </ActionButton>
       )}
       {deleteAction && (
-        <ActionButton type="delete">
+        <ActionButton
+          type="delete"
+          onClick={() =>
+            page === "starred"
+              ? dispatch(starFile(id))
+              : dispatch(archiveFile(id))
+          }
+        >
           <HiOutlineTrash />
         </ActionButton>
       )}
       {archiveAction && (
-        <ActionButton type="archive">
+        <ActionButton type="archive" onClick={() => dispatch(archiveFile(id))}>
           <HiOutlineArchiveBox />
         </ActionButton>
       )}

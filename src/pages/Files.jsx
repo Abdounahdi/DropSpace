@@ -1,10 +1,10 @@
 import { HiOutlineFolderOpen } from "react-icons/hi2";
-import files from "../Data/files";
 import Heading from "../UI/Heading";
 import FilesTable from "../features/files/FilesTable";
-import ActionsBox from "../features/files/ActionsBox";
+import { useSelector } from "react-redux";
 
 function Files() {
+  const files = useSelector((store) => store.files);
   return (
     <>
       <Heading
@@ -12,9 +12,7 @@ function Files() {
         icon={<HiOutlineFolderOpen />}
         color="blue"
       />
-      <FilesTable data={files}>
-        <ActionsBox starAction={true} archiveAction={true} />
-      </FilesTable>
+      <FilesTable data={files} starAction={true} archiveAction={true} />
     </>
   );
 }

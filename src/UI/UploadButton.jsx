@@ -1,7 +1,8 @@
-import { Upload, message } from "antd";
 import styled from "styled-components";
 import { HiMiniArrowUpOnSquareStack } from "react-icons/hi2";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createFile } from "../redux/filesSlice";
+import toast from "react-hot-toast";
 
 const Label = styled.label`
   display: inline-block;
@@ -60,46 +61,46 @@ const Label = styled.label`
   }
 `;
 
-const props = {
-  name: "file",
-  action: "https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload",
-  headers: {
-    authorization: "authorization-text",
-  },
-  onChange(info) {
-    if (info.file.status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === "done") {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-};
-
 function UploadButton() {
-  const [file, setFile] = useState();
+  const dispatch = useDispatch();
+  const limits = useSelector((store) => store.limits);
+  console.log(limits);
 
-  
-  useEffect(
-    function () {
-      console.log(file);
-    },
-    [file]
-  );
+  function handleCreateFile(file) {
+    if (!file) return;
+    const uploadedFile = {
+      id: Date.now(),
+      dateCreated: new Date().toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }),
+      size: file.size,
+      name: file.name,
+      type: file.type.includes("image")
+        ? "image"
+        : file.type.includes("video")
+        ? "video"
+        : "file",
+      isStarred: false,
+      isArchived: false,
+    };
+
+    if (!limits[uploadedFile.type]) {
+      dispatch(createFile(uploadedFile));
+    } else {
+      toast("❌ Limit of uploads is reached !");
+    }
+  }
+
   return (
-    // <Upload style={{ width: "100%" }} {...props}>
     <Label>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+      <input
+        type="file"
+        onChange={(e) => handleCreateFile(e.target.files[0])}
+      />
       <HiMiniArrowUpOnSquareStack /> <p>Upload </p>
     </Label>
-    // </Upload>
-    // <Upload style={{ width: "100%" }} {...props}>
-    //   <Button onClick={handleUploadFile}>
-    //     <HiMiniArrowUpOnSquareStack /> <p>Upload </p>
-    //   </Button>
-    // </Upload>
   );
 }
 

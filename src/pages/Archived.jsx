@@ -1,20 +1,22 @@
 import { HiOutlineArchiveBox } from "react-icons/hi2";
 import Heading from "../UI/Heading";
-import files from "../Data/files";
 import FilesTable from "../features/files/FilesTable";
-import ActionsBox from "../features/files/ActionsBox";
+import { useSelector } from "react-redux";
 
 function Archived() {
+  const files = useSelector((store) => store.files);
   return (
     <>
       <Heading
-        heading="Starred Files"
+        heading="Archived Files"
         icon={<HiOutlineArchiveBox />}
         color="pink"
       />
-      <FilesTable data={files.filter((file) => file.isArchived)}>
-        <ActionsBox deleteAction={true} />
-      </FilesTable>
+      <FilesTable
+        data={files.filter((file) => file.isArchived)}
+        deleteAction={true}
+        page="archived"
+      />
     </>
   );
 }
