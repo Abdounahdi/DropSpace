@@ -1,23 +1,13 @@
-import { HiOutlineDocument } from "react-icons/hi";
 import Icon from "./Icon";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Progress } from "antd";
-
-const StyledCard = styled.div`
-  border-radius: var(--border-radius-lg);
-  background-color: var(--color-grey-500);
-  padding: 1.4rem 2.4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 1.6rem;
-`;
+import StyledCard from "./StyledCard";
 
 const P = styled.p`
-  color: var(--color-grey-0);
+  color: var(--color-grey-800);
 `;
 
-function Usage({ color, field , icon }) {
+function Usage({ color, field, icon }) {
   let strokeColorProgress;
   if (color === "purple") {
     strokeColorProgress = "#863FDD";
@@ -27,7 +17,7 @@ function Usage({ color, field , icon }) {
     strokeColorProgress = "#15803d";
   }
   return (
-    <StyledCard>
+    <StyledCard type="vertical">
       <Icon
         style={{ width: "40%", justifyContent: "center" }}
         color={color}

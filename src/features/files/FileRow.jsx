@@ -1,9 +1,9 @@
 import Table from "../../UI/Table";
 import formatBytes from "../../helpers/bytesFormatter";
-import ActionsBox from "../ActionsBox";
+import ActionsBox from "./ActionsBox";
 import FileName from "./FileName";
 
-function FileRow({ file, children  }) {
+function FileRow({ file, children }) {
   return (
     <Table.Row>
       <FileName name={file.name} type={file.type} />

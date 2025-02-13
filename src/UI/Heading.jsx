@@ -21,7 +21,7 @@ function Heading({ icon, heading, color }) {
   return (
     <Container>
       <TitleContainer>
-        <Icon color={color} icon={icon}/>
+        <Icon color={color} icon={icon} />
         <H1>{heading}</H1>
       </TitleContainer>
       <SortBy

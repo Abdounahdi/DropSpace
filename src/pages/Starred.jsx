@@ -2,7 +2,7 @@ import { HiOutlineStar } from "react-icons/hi2";
 import FilesTable from "../features/files/FilesTable";
 import Heading from "../UI/Heading";
 import files from "../Data/files";
-import ActionsBox from "../features/ActionsBox";
+import ActionsBox from "../features/files/ActionsBox";
 
 function Starred() {
   return (
