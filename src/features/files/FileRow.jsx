@@ -5,7 +5,7 @@ import FileName from "./FileName";
 function FileRow({ file, children }) {
   return (
     <Table.Row>
-      <FileName name={file.name} type={file.type} />
+      <FileName file={file} />
       <div>
         {file.dateCreated}
       </div>

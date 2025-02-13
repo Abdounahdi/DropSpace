@@ -15,7 +15,7 @@ function FilesTable({
       <Table.Header>
         <div>Name</div>
         <div>Date Created</div>
-        <div style={{textAlign:"start"}}>Size</div>
+        <div style={{ textAlign: "start" }}>Size</div>
         {inDashboard ? "" : <div>Actions</div>}
       </Table.Header>
       <Table.Body

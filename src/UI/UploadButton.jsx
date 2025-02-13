@@ -64,7 +64,6 @@ const Label = styled.label`
 function UploadButton() {
   const dispatch = useDispatch();
   const limits = useSelector((store) => store.limits);
-  console.log(limits);
 
   function handleCreateFile(file) {
     if (!file) return;

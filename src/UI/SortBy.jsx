@@ -2,8 +2,8 @@ import { useSearchParams } from "react-router";
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
-  font-size: 1.4rem;
-  padding: 0.8rem 1.2rem;
+  font-size: 1.6rem;
+  padding: 1.6rem 1.2rem;
   border: 1px solid
     ${(props) =>
       props.type === "white"
@@ -11,7 +11,8 @@ const StyledSelect = styled.select`
         : "var(--color-grey-300)"};
   border-radius: var(--border-radius-sm);
   background-color: var(--color-grey-50);
-  font-weight: 500;
+  font-weight: 400;
+  color: var(--color-grey-500);
   box-shadow: var(--shadow-sm);
 `;
 

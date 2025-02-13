@@ -1,5 +1,4 @@
-import styled, { css } from "styled-components";
-import Sort from "./SortBy";
+import styled from "styled-components";
 import SortBy from "./SortBy";
 import Icon from "./Icon";
 
@@ -17,21 +16,14 @@ const TitleContainer = styled.div`
 
 const H1 = styled.h1``;
 
-function Heading({ icon, heading, color }) {
+function Heading({ icon, heading, color , children}) {
   return (
     <Container>
       <TitleContainer>
         <Icon color={color} icon={icon} />
         <H1>{heading}</H1>
       </TitleContainer>
-      <SortBy
-        options={[
-          { value: "date-asc", label: "Sort by date (Earlier first)" },
-          { value: "size-asc", label: "Sort by size (Low first)" },
-          { value: "date-desc", label: "Sort by date (Recent first)" },
-          { value: "size-desc", label: "Sort by date (Larger first)" },
-        ]}
-      />
+      {children}
     </Container>
   );
 }

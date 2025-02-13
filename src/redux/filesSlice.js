@@ -2,7 +2,8 @@ import toast from "react-hot-toast";
 import fake_files from "../Data/files";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = fake_files;
+
+const initialState = fake_files
 
 const filesSlice = createSlice({
   name: "files",
@@ -10,7 +11,7 @@ const filesSlice = createSlice({
   reducers: {
     createFile(state, action) {
       state.unshift(action.payload);
-      toast("✅  New File Uploaded !")
+      toast("✅  New File Uploaded !");
     },
     starFile(state, action) {
       state.map((file) =>
