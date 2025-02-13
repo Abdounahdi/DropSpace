@@ -17,6 +17,15 @@ const Row = styled.div`
   gap: 1.6rem;
 `;
 
+const H = styled.h3`
+  font-size: 2rem;
+`;
+
+const P = styled.p`
+  color: var(--color-grey-400);
+  font-weight: 500;
+`
+
 function CardLinks({ starred, archived }) {
   return (
     <Row>
@@ -24,22 +33,22 @@ function CardLinks({ starred, archived }) {
         <Icon
           color="yellow"
           icon={<HiOutlineStar />}
-          style={{ width: "30%", justifyContent: "center" }}
+          style={{ padding: "1rem", justifyContent: "center" }}
         />
         <StyledLink to="/files-starred">
-          <h2>{starred} Starred Files</h2>
-          <p>Go to view</p>
+          <H>{starred} Starred Files</H>
+          <P>Go to view</P>
         </StyledLink>
       </StyledCard>
       <StyledCard type="horizontal">
         <Icon
           color="pink"
           icon={<HiOutlineArchive />}
-          style={{ width: "30%", justifyContent: "center" }}
+          style={{ padding: "1rem", justifyContent: "center" }}
         />
         <StyledLink to="/files-archived">
-          <h2>{archived} Archived Files</h2>
-          <p>Go to view</p>
+          <H>{archived} Archived Files</H>
+          <P>Go to view</P>
         </StyledLink>
       </StyledCard>
     </Row>

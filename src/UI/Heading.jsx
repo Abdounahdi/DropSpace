@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import SortBy from "./SortBy";
 import Icon from "./Icon";
 
 const Container = styled.div`

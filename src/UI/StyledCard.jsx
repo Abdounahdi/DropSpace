@@ -5,7 +5,7 @@ const variations = {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 2.6rem;
+    gap: 2rem;
   `,
   horizontal: css`
     display: flex;
@@ -17,7 +17,7 @@ const variations = {
 const StyledCard = styled.div`
   border-radius: var(--border-radius-lg);
   background-color: var(--color-grey-50);
-  padding: 1.4rem 2.4rem;
+  padding: 2rem 2.4rem;
   ${(props) => variations[props.type]}
 `;
 

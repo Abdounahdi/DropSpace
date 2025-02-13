@@ -72,14 +72,14 @@ const Icon = styled.div`
   ${(props) => variations[props.type]}
 `;
 
-function FileName({ file }) {
+function FileName({ file, showTags }) {
   const { type, name, isStarred, isArchived } = file;
   return (
     <Box>
       <Icon
         type={type === "image" ? "image" : type === "video" ? "video" : "file"}
-        isStarred={isStarred ? "starred" : ""}
-        isArchived={isArchived ? "archived" : ""}
+        isStarred={showTags && isStarred ? "starred" : ""}
+        isArchived={showTags && isArchived ? "archived" : ""}
       >
         {type === "video" ? (
           <HiOutlineVideoCamera />

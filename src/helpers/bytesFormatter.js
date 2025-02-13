@@ -2,7 +2,7 @@ function formatBytes(bytes, decimals = 2) {
   if (bytes === 0) return "0 Bytes";
 
   const k = 1000;
-  const sizes = ["Bytes", "KB", "MB", "GB"]
+  const sizes = ["bytes", "kb", "mb", "gb"]
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
   return (

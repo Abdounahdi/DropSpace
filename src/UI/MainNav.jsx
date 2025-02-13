@@ -1,11 +1,8 @@
 import {
   HiOutlineArchiveBox,
-  HiOutlineCalendarDays,
   HiOutlineFolderOpen,
   HiOutlineHome,
-  HiOutlineHomeModern,
   HiOutlineStar,
-  HiOutlineUsers,
 } from "react-icons/hi2";
 import { NavLink } from "react-router";
 import styled from "styled-components";

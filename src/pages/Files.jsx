@@ -41,6 +41,7 @@ function Files() {
         data={[...files].sort(compareFn)}
         starAction={true}
         archiveAction={true}
+        showTags={true}
       />
     </>
   );

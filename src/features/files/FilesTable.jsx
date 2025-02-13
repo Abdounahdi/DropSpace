@@ -9,6 +9,7 @@ function FilesTable({
   starAction,
   archiveAction,
   deleteAction,
+  showTags = false 
 }) {
   return (
     <Table columns={inDashboard ? "1fr 1fr 1fr" : "1fr 1fr 1fr 1fr"}>
@@ -21,7 +22,7 @@ function FilesTable({
       <Table.Body
         data={data}
         render={(file) => (
-          <FileRow file={file} key={file.id}>
+          <FileRow file={file} key={file.id} showTags={showTags}>
             <ActionsBox
               page={page}
               starAction={starAction}

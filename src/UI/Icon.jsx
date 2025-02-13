@@ -25,10 +25,10 @@ const StyledIcon = styled.div`
   border-radius: var(--border-radius-lg);
 
   & svg {
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width:4.5rem;
     color: var(--color-grey-0);
-    stroke-width: 2;
+    stroke-width: 1.4;
   }
 
   ${(props) => variations[props.color]}

@@ -8,6 +8,8 @@ import { limitReached } from "../redux/limitsSlice";
 
 const P = styled.p`
   color: var(--color-grey-500);
+  font-size: 1.4rem;
+  font-weight: 500;
 `;
 
 const TextContainer = styled.div`
@@ -20,10 +22,14 @@ const B = styled.b`
   color: var(--color-grey-800);
 `;
 
+const H = styled.h3`
+  font-size: 2.1rem;
+`;
+
 const RowText = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1.6rem;
 `;
 
 const HUNDRED_GEGABYTE = 100000000000;
@@ -53,11 +59,11 @@ function Usage({ color, field, icon, value }) {
   return (
     <StyledCard type="vertical">
       <Icon
-        style={{ width: "40%", justifyContent: "center" }}
+        style={{ padding: "1.6rem", justifyContent: "center" }}
         color={color}
         icon={icon}
       />
-      <h2>{field}</h2>
+      <H>{field}</H>
       <TextContainer>
         <Progress
           percent={precentage}
@@ -65,12 +71,12 @@ function Usage({ color, field, icon, value }) {
             align: "start",
             type: "inner",
           }}
-          size={[300, 20]}
+          size={[300, 12]}
           strokeColor={strokeColorProgress}
         />
         <RowText>
           <B>{precentage}%</B>
-          <P>{formatBytes(sizeUsed)} out of 100gb</P>
+          <P>{formatBytes(sizeUsed)} of 80gb Used</P>
         </RowText>
       </TextContainer>
     </StyledCard>

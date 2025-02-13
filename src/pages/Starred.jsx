@@ -1,7 +1,6 @@
 import { HiOutlineStar } from "react-icons/hi2";
 import FilesTable from "../features/files/FilesTable";
 import Heading from "../UI/Heading";
-import ActionsBox from "../features/files/ActionsBox";
 import { useSelector } from "react-redux";
 import SortBy from "../UI/SortBy";
 import { useSearchParams } from "react-router";

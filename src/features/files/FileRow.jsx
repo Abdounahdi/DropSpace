@@ -2,13 +2,11 @@ import Table from "../../UI/Table";
 import formatBytes from "../../helpers/bytesFormatter";
 import FileName from "./FileName";
 
-function FileRow({ file, children }) {
+function FileRow({ file, children , showTags }) {
   return (
     <Table.Row>
-      <FileName file={file} />
-      <div>
-        {file.dateCreated}
-      </div>
+      <FileName file={file} showTags={showTags}/>
+      <div>{file.dateCreated}</div>
       <div>{formatBytes(file.size)}</div>
       {children}
     </Table.Row>
