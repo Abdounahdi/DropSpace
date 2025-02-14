@@ -45,6 +45,7 @@ function Archived() {
         data={[...files].filter((file) => file.isArchived).sort(compareFn)}
         deleteAction={true}
         page="archived"
+        inArchived={true}
       />
     </>
   );

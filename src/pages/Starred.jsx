@@ -41,6 +41,7 @@ function Starred() {
         data={[...files].filter((file) => file.isStarred).sort(compareFn)}
         deleteAction={true}
         page="starred"
+        inStarred={true}
       />
     </>
   );

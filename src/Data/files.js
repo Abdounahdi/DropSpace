@@ -2,10 +2,11 @@ const fake_files = [
   {
     id: 1,
     dateCreated: "October 1, 2023",
-    size: 100000000000,
+    size: 80000000000,
     name: "file1.txt",
     type: "file",
     isStarred: true,
+    dateStarred: "October 2, 2023",
     isArchived: false,
   },
   {
@@ -16,6 +17,7 @@ const fake_files = [
     type: "image",
     isStarred: false,
     isArchived: true,
+    dateArchived: "September 20, 2023",
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ const fake_files = [
     name: "document.pdf",
     type: "file",
     isStarred: true,
+    dateStarred: "August 22, 2023",
     isArchived: false,
   },
   {
@@ -42,7 +45,9 @@ const fake_files = [
     name: "music.mp3",
     type: "file",
     isStarred: true,
+    dateStarred: "June 7, 2023",
     isArchived: true,
+    dateArchived: "June 10, 2023",
   },
   {
     id: 6,
@@ -60,7 +65,9 @@ const fake_files = [
     name: "archive.zip",
     type: "file",
     isStarred: true,
+    dateStarred: "April 20, 2023",
     isArchived: true,
+    dateArchived: "April 22, 2023",
   },
   {
     id: 8,
@@ -78,6 +85,7 @@ const fake_files = [
     name: "code.js",
     type: "file",
     isStarred: true,
+    dateStarred: "February 16, 2023",
     isArchived: false,
   },
   {
@@ -88,6 +96,7 @@ const fake_files = [
     type: "file",
     isStarred: false,
     isArchived: true,
+    dateArchived: "February 1, 2023",
   },
 ];
 

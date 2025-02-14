@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Media from "../../Style/Media";
 
 import { HiArchiveBoxXMark } from "react-icons/hi2";
-import FileRow from "../files/FileRow";
 import FileName from "../files/FileName";
 import formatBytes from "../../helpers/bytesFormatter";
 
@@ -63,17 +62,6 @@ const StyledBody = styled.section`
   margin: 0.4rem 0;
 `;
 
-const Footer = styled.footer`
-  background-color: var(--color-grey-50);
-  display: flex;
-  justify-content: center;
-  padding: 1.2rem;
-
-  /* This will hide the footer when it contains no child elements. Possible thanks to the parent selector :has 🎉 */
-  &:not(:has(*)) {
-    display: none;
-  }
-`;
 
 const Empty = styled.p`
   font-size: 1.6rem;
@@ -129,11 +117,6 @@ const DashboardTableStyle = styled.div`
 
 const DivTablet = styled.div`
   ${Media.tabletMini`
-    display:none;
-  `}
-`;
-const DivPhone = styled.div`
-  ${Media.phone`
     display:none;
   `}
 `;

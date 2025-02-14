@@ -37,14 +37,14 @@ const RowText = styled.div`
   gap: 1.6rem;
 `;
 
-const HUNDRED_GEGABYTE = 100000000000;
+const EIGHTY_GEGABYTE = 80000000000;
 
 function Usage({ color, field, icon, value, style }) {
   const files = useSelector((store) => store.files);
   const sizeUsed = files
     .filter((file) => file.type === value)
     .reduce((acc, curr) => acc + curr.size, 0);
-  const precentage = ((sizeUsed * 100) / HUNDRED_GEGABYTE).toFixed(0);
+  const precentage = ((sizeUsed * 100) / EIGHTY_GEGABYTE).toFixed(0);
   let progressLength;
 
   // if (window.matchMedia("(max-width: 880px)").matches) {

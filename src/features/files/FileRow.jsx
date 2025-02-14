@@ -15,11 +15,17 @@ const DivPhone = styled.div`
   `}
 `;
 
-function FileRow({ file, children, showTags }) {
+function FileRow({ file, children, showTags, inStarred = false , inArchived = false}) {
   return (
     <Table.Row>
       <FileName file={file} showTags={showTags} />
-      <DivTablet>{file.dateCreated}</DivTablet>
+      <DivTablet>
+        {inStarred
+          ? file.dateStarred
+          : inArchived
+          ? file.dateArchived
+          : file.dateCreated}
+      </DivTablet>
       <DivPhone>{formatBytes(file.size)}</DivPhone>
       {children}
     </Table.Row>

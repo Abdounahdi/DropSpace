@@ -2,12 +2,9 @@ import styled from "styled-components";
 import Usage from "../UI/Usage";
 import { HiOutlineDocument, HiOutlineVideoCamera } from "react-icons/hi";
 import { HiOutlinePhoto } from "react-icons/hi2";
-import FilesTable from "../features/files/FilesTable";
 import CardLinks from "../features/Dashboard/CardLinks";
 import { useSelector } from "react-redux";
 import Media from "../Style/Media";
-import { Table } from "antd";
-import UploadButton from "../UI/UploadButton";
 import UploadButtonDashboard from "../UI/UploadButtonDashboard";
 import DashboardTable from "../features/Dashboard/DashboardTable";
 

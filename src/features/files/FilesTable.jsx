@@ -23,19 +23,33 @@ function FilesTable({
   archiveAction,
   deleteAction,
   showTags = false,
+  inStarred,
+  inArchived=false,
 }) {
   return (
     <Table columns={inDashboard ? "2fr 1fr 1fr" : "2fr 1fr 1fr 1fr"}>
       <Table.Header>
         <div>Name</div>
-        <DivTablet>Date Created</DivTablet>
+        <DivTablet>
+          {inStarred
+            ? "Date Starred"
+            : inArchived
+            ? "Date Archived"
+            : "Date Created"}{" "}
+        </DivTablet>
         <DivPhone style={{ textAlign: "start" }}>Size</DivPhone>
         {inDashboard ? "" : <div>Actions</div>}
       </Table.Header>
       <Table.Body
         data={data}
         render={(file) => (
-          <FileRow file={file} key={file.id} showTags={showTags}>
+          <FileRow
+            file={file}
+            key={file.id}
+            showTags={showTags}
+            inStarred={inStarred}
+            inArchived={inArchived}
+          >
             <ActionsBox
               page={page}
               starAction={starAction}

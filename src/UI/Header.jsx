@@ -1,12 +1,11 @@
 import { HiMagnifyingGlass, HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import UserDetails from "./UserDetails";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchResults from "./SearchResults";
 import { useSelector } from "react-redux";
 import { useOutsideClick } from "../helpers/useOutsideHook";
 import LogoDrop from "../assets/LogoDrop.svg";
-import Logo from "./Logo";
 import Media from "../Style/Media";
 import MainNav from "./MainNav";
 
